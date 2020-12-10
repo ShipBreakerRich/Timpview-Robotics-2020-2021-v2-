@@ -21,10 +21,20 @@ motor IntakeRight = motor(PORT6, ratio18_1, false);
 motor EscalatorRamp = motor(PORT7, ratio18_1, false);
 motor Sorter = motor(PORT8, ratio18_1, false);
 /*vex-vision-config:begin*/
-vision FrontVision = vision (PORT10, 50);
+signature FrontVision__RED_BALL = signature (1, 2249, 9645, 5947, -811, 1, -405, 1, 0);
+signature FrontVision__BLUE_BALL = signature (2, -3111, -1821, -2466, 6795, 12309, 9552, 3, 0);
+signature FrontVision__GOAL = signature (3, -5857, -5621, -5739, -5687, -5257, -5472, 4.6, 0);
+signature FrontVision__SIG_4 = signature (4, 0, 0, 0, 0, 0, 0, 3, 0);
+signature FrontVision__SIG_5 = signature (5, 0, 0, 0, 0, 0, 0, 3, 0);
+signature FrontVision__SIG_6 = signature (6, 0, 0, 0, 0, 0, 0, 3, 0);
+signature FrontVision__SIG_7 = signature (7, 0, 0, 0, 0, 0, 0, 3, 0);
+vision FrontVision = vision (PORT10, 50, FrontVision__RED_BALL, FrontVision__BLUE_BALL, FrontVision__GOAL, FrontVision__SIG_4, FrontVision__SIG_5, FrontVision__SIG_6, FrontVision__SIG_7);
 /*vex-vision-config:end*/
 /*vex-vision-config:begin*/
-vision InnerVision = vision (PORT11, 50);
+signature InnerVision__RED_BALL = signature (1, 1519, 6827, 4173, -989, -143, -566, 1, 0);
+signature InnerVision__BLUE_BALL = signature (2, -2613, -1739, -2176, 6629, 10877, 8753, 2.5, 0);
+signature InnerVision__GOAL = signature (3, -5269, -4659, -4964, -4775, -4017, -4396, 2.5, 0);
+vision InnerVision = vision (PORT11, 50, InnerVision__RED_BALL, InnerVision__BLUE_BALL, InnerVision__GOAL);
 /*vex-vision-config:end*/
 bumper BallDetector = bumper(Brain.ThreeWirePort.G);
 controller Controller1 = controller(primary);
