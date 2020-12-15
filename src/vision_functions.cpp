@@ -58,11 +58,12 @@ void collectSignature (vision::signature front_type)
 bool detectSignature (vision::signature sig)
 {
   FrontVision.takeSnapshot(sig);
-  if (FrontVision.largestObject.exists)
-  {
-    return true;
-  } else
-  {
-    return false;
-  }
+  return FrontVision.largestObject.exists;
+}
+
+bool detectSignatureInner (vision::signature sig)
+{
+  InnerVision.takeSnapshot(sig);
+  return InnerVision.largestObject.exists;
+
 }

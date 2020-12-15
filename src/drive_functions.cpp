@@ -71,38 +71,8 @@ void Escalator::up ()
 void Escalator::down ()
 {
   is_running = true;
-  assignedMotor.spin(forward);
+  assignedMotor.spin(reverse);
   sorterMotor.spin(sorterDirection);
-}
-
-void Escalator::toggleOrSwitch (int newDir)
-{      
-  if (is_running)
-  {
-    if (newDir != dir)
-    {
-      if (newDir > 0)
-      {
-        up();
-      } else
-      {
-        down();
-      }
-    } else 
-    {
-      off();
-    }
-  } else
-  {
-    if (newDir > 0)
-    {
-      up();
-    } else
-    {
-      down();
-    }
-  }
-  dir = newDir;
 }
 
 void Escalator::toggle ()
@@ -131,6 +101,13 @@ void Escalator::setPower (int pow)
 void Escalator::setSorterDirection (directionType dir)
 {
   sorterDirection = dir;
+  if (is_running)
+  {
+    sorterMotor.spin(dir);
+  } else
+  {
+    sorterMotor.stop();
+  }
 }
 
 Intake intake (IntakeLeft, IntakeRight);

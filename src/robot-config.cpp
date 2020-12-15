@@ -18,8 +18,8 @@ inertial TurnGyroSmart = inertial(PORT9);
 smartdrive Drivetrain = smartdrive(LeftDriveSmart, RightDriveSmart, TurnGyroSmart, 319.19, 320, 40, mm, 1);
 motor IntakeLeft = motor(PORT5, ratio18_1, false);
 motor IntakeRight = motor(PORT6, ratio18_1, false);
-motor EscalatorRamp = motor(PORT7, ratio18_1, false);
-motor Sorter = motor(PORT8, ratio18_1, false);
+motor EscalatorRamp = motor(PORT8, ratio18_1, false);
+motor Sorter = motor(PORT7, ratio18_1, false);
 /*vex-vision-config:begin*/
 signature FrontVision__RED_BALL = signature (1, 2249, 9645, 5947, -811, 1, -405, 1, 0);
 signature FrontVision__BLUE_BALL = signature (2, -3111, -1821, -2466, 6795, 12309, 9552, 3, 0);
@@ -34,7 +34,7 @@ vision FrontVision = vision (PORT10, 50, FrontVision__RED_BALL, FrontVision__BLU
 signature InnerVision__RED_BALL = signature (1, 1519, 6827, 4173, -989, -143, -566, 1, 0);
 signature InnerVision__BLUE_BALL = signature (2, -2613, -1739, -2176, 6629, 10877, 8753, 2.5, 0);
 signature InnerVision__GOAL = signature (3, -5269, -4659, -4964, -4775, -4017, -4396, 2.5, 0);
-vision InnerVision = vision (PORT11, 50, InnerVision__RED_BALL, InnerVision__BLUE_BALL, InnerVision__GOAL);
+vision InnerVision = vision (PORT20, 50, InnerVision__RED_BALL, InnerVision__BLUE_BALL, InnerVision__GOAL);
 /*vex-vision-config:end*/
 bumper BallDetector = bumper(Brain.ThreeWirePort.G);
 controller Controller1 = controller(primary);
