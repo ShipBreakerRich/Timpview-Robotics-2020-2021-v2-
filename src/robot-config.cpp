@@ -38,6 +38,8 @@ vision InnerVision = vision (PORT20, 50, InnerVision__RED_BALL, InnerVision__BLU
 /*vex-vision-config:end*/
 bumper BallDetector = bumper(Brain.ThreeWirePort.G);
 controller Controller1 = controller(primary);
+limit TeamSwitcher = limit(Brain.ThreeWirePort.H);
+pot ModePotentiometer = pot(Brain.ThreeWirePort.F);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

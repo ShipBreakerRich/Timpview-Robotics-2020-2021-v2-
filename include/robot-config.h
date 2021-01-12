@@ -28,6 +28,8 @@ extern signature InnerVision__SIG_7;
 extern vision InnerVision;
 extern bumper BallDetector;
 extern controller Controller1;
+extern limit TeamSwitcher;
+extern pot ModePotentiometer;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
