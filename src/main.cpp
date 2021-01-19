@@ -45,15 +45,15 @@ ModeSelector modeSelector(ModePotentiometer, 4);
 
 //Modes:
 //0: Left Corner
-//1: 
+//1: Middle
 //2: Right Corner
-//3: 
+//3: Skills
 
 void checkSorter ()
 {
   while (Competition.isAutonomous() || Competition.isDriverControl())
   {
-    if (enemySignatureInner)
+    if (detectSignatureInner(*enemySignatureInner))
     {
       escalator.setSorterDirection(reverse);
     }
