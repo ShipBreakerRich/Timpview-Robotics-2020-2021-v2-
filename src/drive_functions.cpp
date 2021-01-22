@@ -11,12 +11,14 @@ const int drivetrainTurnPower = 100;
 // Autonomous
 const int intakePowerAuto = 100;
 const int escalatorPowerAuto = 100;
-const int drivetrainPowerAuto = 100;
+const int drivetrainPowerAuto = 50;
 const int sorterPowerAuto = 100;
 const int drivetrainTurnPowerAuto = 50;
 
 //Skills
 const int drivetrainPowerAutoSkills = 40;
+
+bool slowmode = false;
 
 void driveForTime (directionType dir, int number, timeUnits units)
 {
@@ -158,4 +160,28 @@ void descoreCompletely ()
   wait(4, sec);
   intake.off();
   escalator.off();
+}
+
+void toggleSlowModeAuto (int amount)
+{
+  slowmode = !slowmode;
+  if (slowmode)
+  {
+    Drivetrain.setDriveVelocity(drivetrainPowerAuto / amount, percent);
+  } else
+  {
+    Drivetrain.setDriveVelocity(drivetrainPowerAuto, percent);
+  }
+}
+
+void shimmy (int timeAmountForward, int timeAmountBackward, timeUnits units, int iterations, int waitTime)
+{
+  for (int i = 0; i < iterations; i++) 
+  {
+    escalator.off();
+    driveForTime(reverse, timeAmountForward, units);
+    escalator.up();
+    driveForTime(forward, timeAmountBackward, units);
+    wait(waitTime, units);
+  }
 }

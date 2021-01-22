@@ -61,4 +61,8 @@ void depositBalls (int number);
 void removeBalls (int number);
 
 void descoreCompletely ();
+
+void toggleSlowModeAuto (int amount = 2);
+
+void shimmy (int timeAmountForward, int timeAmountBackward, vex::timeUnits units, int iterations, int waitTime = 500);
 #endif

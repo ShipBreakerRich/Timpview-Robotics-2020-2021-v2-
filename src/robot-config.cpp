@@ -16,8 +16,8 @@ motor rightMotorB = motor(PORT4, ratio18_1, true);
 motor_group RightDriveSmart = motor_group(rightMotorA, rightMotorB);
 inertial TurnGyroSmart = inertial(PORT9);
 smartdrive Drivetrain = smartdrive(LeftDriveSmart, RightDriveSmart, TurnGyroSmart, 319.19, 320, 40, mm, 1);
-motor IntakeLeft = motor(PORT5, ratio18_1, false);
-motor IntakeRight = motor(PORT6, ratio18_1, false);
+motor IntakeLeft = motor(PORT6, ratio18_1, false);
+motor IntakeRight = motor(PORT5, ratio18_1, false);
 motor EscalatorRamp = motor(PORT8, ratio18_1, false);
 motor Sorter = motor(PORT7, ratio18_1, false);
 /*vex-vision-config:begin*/

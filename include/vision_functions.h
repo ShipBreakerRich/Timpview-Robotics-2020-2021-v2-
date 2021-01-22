@@ -10,10 +10,10 @@ extern int slack;
 
 void centerOn (vision::signature type);
 
-void collectSignature (vision::signature front_type);
+void collectSignature (vision::signature inner_type, vision::signature front_type, int threshold);
 
-bool detectSignature (vision::signature sig);
+vision::object detectSignature (vision::signature sig);
 
-bool detectSignatureInner (vision::signature sig);
+vision::object detectSignatureInner (vision::signature sig);
 
 #endif
