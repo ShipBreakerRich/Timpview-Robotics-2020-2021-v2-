@@ -9,7 +9,7 @@
 void autonomousConfig();
 void cornerStrategy ();
 void middleStrategy ();
-void driverControl ();
+void rerunProgram ();
 void skillsAutonomous ();
 
 #endif

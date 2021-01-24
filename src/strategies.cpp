@@ -78,8 +78,18 @@ void middleStrategy ()
   removeBalls(2);
 }
 
-void driverControl ()
+void rerunProgram()
 {
+  int lSpeed = 0;
+  int RSpeed = 0;
+  int fl = 0;
+  int bl = 0;
+  int fr = 0;
+  int br = 0;
+  int SorterSpeed = 0;
+  int EleSpeed = 0;
+
+
   //Intake system
   Controller1.ButtonL2.pressed([](){intake.inward();});
   Controller1.ButtonL2.released([](){intake.off();});
@@ -88,6 +98,51 @@ void driverControl ()
 
   //Escalator system
   Controller1.ButtonA.pressed([](){escalator.toggle();});
+
+
+
+  FILE* usd_file_write = fopen("/rerun.txt","w");
+  fprintf(usd_file_write,"");
+  fclose(usd_file_write);
+
+  Brain.Timer.reset();
+  while(true)
+  {
+    wait(.1, sec);
+
+    lSpeed = IntakeLeft.velocity(percent);
+    RSpeed = IntakeRight.velocity(percent);
+    fl =  motor(PORT1, ratio18_1, false).velocity(percent);
+    bl = motor(PORT2, ratio18_1, false).velocity(percent);
+    fr = motor(PORT3, ratio18_1, true).velocity(percent);
+    br = motor(PORT4, ratio18_1, true).velocity(percent);
+    SorterSpeed = Sorter.velocity(percent);
+    EleSpeed = EscalatorRamp.velocity(percent);
+
+
+    FILE* rerunText = fopen("/usd/rerun.txt", "a");
+    fprintf(rerunText, "IntakeLeft.setVelocity(%i, percent); \n", lSpeed );
+    fprintf(rerunText, "IntakeRight.setVelocity(%i, percent); \n", RSpeed );
+    fprintf(rerunText, "motor(PORT1, ratio18_1, false).setVelocity(%i, percent); \n", fl );
+    fprintf(rerunText, "motor(PORT2, ratio18_1, false).setVelocity(%i, percent); \n", bl );
+    fprintf(rerunText, "motor(PORT3, ratio18_1, true).setVelocity(%i, percent); \n", fr );
+    fprintf(rerunText, "motor(PORT4, ratio18_1, true).setVelocity(%i, percent); \n", br );
+    fprintf(rerunText, "Sorter.setVelocity(%i, percent); \n", SorterSpeed );
+    fprintf(rerunText, "EscalatorRamp.setVelocity(%i, percent); \n", EleSpeed );
+    fprintf(rerunText, "wait(%f,sec)", Brain.Timer.value());
+    
+    Brain.Timer.reset();
+
+    fclose(rerunText);
+   
+
+
+
+
+
+  }
+
+
 }
 
 void skillsAutonomous ()

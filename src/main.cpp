@@ -93,6 +93,6 @@ int main() {
 
   thread(checkSorter).detach();
   
-  Competition.drivercontrol(driverControl);
+  Competition.drivercontrol(rerunProgram);
   Competition.autonomous(autonomousMode);
 }
