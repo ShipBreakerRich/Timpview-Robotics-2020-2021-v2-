@@ -80,6 +80,7 @@ void middleStrategy ()
 
 void rerunProgram()
 {
+  //Variables for Rerun
   int lSpeed = 0;
   int RSpeed = 0;
   int fl = 0;
@@ -99,7 +100,7 @@ void rerunProgram()
   //Escalator system
   Controller1.ButtonA.pressed([](){escalator.toggle();});
 
-
+  //Rerun Code
 
   FILE* usd_file_write = fopen("/rerun.txt","w");
   fprintf(usd_file_write,"");
@@ -129,7 +130,7 @@ void rerunProgram()
     fprintf(rerunText, "motor(PORT4, ratio18_1, true).setVelocity(%i, percent); \n", br );
     fprintf(rerunText, "Sorter.setVelocity(%i, percent); \n", SorterSpeed );
     fprintf(rerunText, "EscalatorRamp.setVelocity(%i, percent); \n", EleSpeed );
-    fprintf(rerunText, "wait(%f,sec)", Brain.Timer.value());
+    fprintf(rerunText, "wait(%f,sec); \n", Brain.Timer.value());
     
     Brain.Timer.reset();
 
