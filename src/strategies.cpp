@@ -78,8 +78,9 @@ void middleStrategy ()
   removeBalls(2);
 }
 
-void rerunProgram()
-{
+
+
+void recordDriver(){
   //Variables for Rerun
   int lSpeed = 0;
   int RSpeed = 0;
@@ -90,19 +91,7 @@ void rerunProgram()
   int SorterSpeed = 0;
   int EleSpeed = 0;
 
-
-  //Intake system
-  Controller1.ButtonL2.pressed([](){intake.inward();});
-  Controller1.ButtonL2.released([](){intake.off();});
-  Controller1.ButtonL1.pressed([](){intake.outward();});
-  Controller1.ButtonL1.released([](){intake.off();});
-
-  //Escalator system
-  Controller1.ButtonA.pressed([](){escalator.toggle();});
-
-  //Rerun Code
-
-  FILE* usd_file_write = fopen("/rerun.txt","w");
+  FILE* usd_file_write = fopen("/usd/rerun.txt","w");
   fprintf(usd_file_write,"");
   fclose(usd_file_write);
 
@@ -135,16 +124,28 @@ void rerunProgram()
     Brain.Timer.reset();
 
     fclose(rerunText);
-   
-
-
-
-
 
   }
 
-
 }
+
+void rerunProgram()
+{
+
+  //Intake system
+  Controller1.ButtonL2.pressed([](){intake.inward();});
+  Controller1.ButtonL2.released([](){intake.off();});
+  Controller1.ButtonL1.pressed([](){intake.outward();});
+  Controller1.ButtonL1.released([](){intake.off();});
+
+  //Escalator system
+  Controller1.ButtonA.pressed([](){escalator.toggle();});
+
+  //Rerun Code
+  recordDriver();
+  
+}
+
 
 void skillsAutonomous ()
 {
